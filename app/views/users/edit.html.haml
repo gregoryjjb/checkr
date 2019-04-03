@@ -1,0 +1,11 @@
+%section.hero
+  %div.hero-body
+    %div.container
+      %h1.title Edit User
+      %h1.subtitle= @user.name
+      = link_to 'Back to all users', users_path, { class: 'button is-outlined is-link' }
+
+%section.section
+  %div.container
+    %div.left-form
+      = render 'edit_form'

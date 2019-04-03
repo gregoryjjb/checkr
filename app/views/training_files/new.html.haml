@@ -1,0 +1,16 @@
+%section.section
+  %div.container
+    %h1.title New training file
+    
+    = link_to 'Back to all training files', training_files_path, { class: 'button is-link is-outlined' }
+
+%section.section
+  %div.container
+    %div.left-form
+      = form_for @training_file do |f|
+        %div.field
+          %label.label File
+          = f.file_field :file, { class: 'input' }
+        
+        %div.field
+          = f.submit 'Submit', { class: 'button is-primary' }

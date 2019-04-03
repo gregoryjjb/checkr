@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+input {
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-image: none;
+    padding: 4px;
+}
+
+input:focus {
+    outline: 0;
+    border-width: 2px;
+}
+
+button, input[type="button"], input[type="submit"] {
+    background: none;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 72px;
+}
+
+.submit {
+    color: green;
+    border-color: green;
+    margin: 0 auto;
+}
+
+label {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: #222;
+}
+
+.flash {
+    padding: 16px;
+    border-radius: 8px;
+}*/
+
+.centered-form {
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.left-form {
+    max-width: 300px;
+}
+
+.notice {
+    background: lightgrey;
+}
+
+.success {
+    background: lightgreen;
+}
+
+.alert {
+    background: lightcoral;
+}
+
+.popup {
+    position: absolute;
+    right: 0;
+    margin: 8px 12px;
+    max-width: 600px;
+}

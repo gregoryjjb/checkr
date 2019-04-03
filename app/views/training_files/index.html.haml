@@ -1,0 +1,32 @@
+%section.section
+  %div.container
+    %h1.title Training Files
+    %h2.subtitle These files are how the server knows what a virus is.
+    
+    = link_to 'Upload a new Training File', new_training_file_path, { class: 'button is-link' }
+
+%section.section
+  %div.container
+    %table.table
+      %thead
+        %tr
+          %th ID
+          %th Filename
+          %th Hash
+          %th Fingerprint x64
+          %th Uploaded by
+          %th Uploaded at
+          %th
+      
+      %tbody
+        - @training_files.each do |file|
+          %tr
+            %td= file.id
+            %td= file.original_filename
+            %td{title: file.file_digest}
+              = file.file_digest_snippet
+            %td{title: file.bytes_sample}
+              = file.bytes_snippet
+            %td= file.user.name
+            %td= file.created_at
+            %td= link_to 'Delete', file, method: :delete, data: { confirm: 'Are you sure?' }

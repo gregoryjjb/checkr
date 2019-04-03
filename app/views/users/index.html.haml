@@ -1,0 +1,22 @@
+%section.hero
+  %div.hero-body
+    %div.container
+      %h1.title All Users
+
+%section.section
+  %div.container
+    %table.table
+      %thead
+        %tr
+          %th ID
+          %th Name
+          %th Admin?
+          %th
+      
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.id
+            %td= user.name
+            %td= user.admin
+            %td= link_to 'Edit', edit_user_path(user)

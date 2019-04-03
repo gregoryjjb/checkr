@@ -1,0 +1,33 @@
+
+= form_for @user do |f|
+  %div.field
+    %label.label Username
+    %div.control
+      = f.text_field :name, :class => "input"
+  
+  %div.field
+    %label.label Email
+    %div.control
+      = f.email_field :email, { class: 'input' }
+
+  %div.field
+    %label.label Password
+    %div.control
+      = f.password_field :password, :class => "input"
+    %p.help Leave blank to not change
+  
+  %div.field
+    %label.label Confirm Password
+    %div.control
+      = f.password_field :password_confirmation, :class => "input"
+  
+  %div.field
+    %label.label.checkbox
+      = f.check_box :admin, { disabled: current_user.id == @user.id }
+      Administrator
+    - if current_user.id == @user.id
+      %p.help You cannot demote yourself from administrator
+
+  %div.field
+    %div.control
+      = f.submit "Apply", :class => "button is-primary"

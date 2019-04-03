@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title Checkr
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css", :rel => "stylesheet"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
+    = favicon_link_tag asset_path('checkr_favicon.png')
+  %body
+    = render 'navbar'
+    - [:notice, :alert].each do |key|
+      - unless flash[key].blank?
+        %div{class: "notification popup #{key == :notice ? 'is-primary' : 'is-danger'}"}
+          %button.delete
+          = flash[key]
+    = yield

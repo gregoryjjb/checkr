@@ -1,0 +1,29 @@
+%nav.navbar
+  %div.navbar-brand
+    //%h1.title.navbar-item Checkr
+    = link_to image_tag('checkr_logo.png'), root_path, { class: 'navbar-item' }
+    
+    
+    %a.burger.navbar-burger{role: 'navigation', 'aria-expanded': 'false', 'data-target': 'menu'}
+      %span{'aria-hidden': 'true'}
+      %span{'aria-hidden': 'true'}
+      %span{'aria-hidden': 'true'}
+
+  %div#menu.navbar-menu
+    %div.navbar-start
+      = link_to 'Home', root_path, { class: 'navbar-item' }
+
+      - if is_admin
+        = link_to 'Users', users_path, { class: 'navbar-item has-text-danger' }
+        = link_to 'Train', training_files_path, { class: 'navbar-item has-text-danger' }
+
+      = link_to 'About', about_path, { class: 'navbar-item' }
+
+    %div.navbar-end
+      %div.navbar-item
+        %div.buttons
+          - if logged_in
+            = link_to 'Sign out', logout_path, method: :delete, remote: true, class: 'button'
+          - else
+            = link_to 'Log in', login_path, { class: 'button is-link' }
+            = link_to 'Sign up', signup_path, { class: 'button' }
