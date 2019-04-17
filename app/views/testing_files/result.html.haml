@@ -2,7 +2,9 @@
   %div.hero-body
     %div.container
       - if @pass
-        %h1.title.has-text-primary File is clean
+        %h1.title.has-text-primary
+          File is clean
+          = image_tag 'check.png', { style: 'height: 1em;' }
         %h2.subtitle Your file did not match any of our malware.
       - else
         %h1.title.has-text-danger File is infected

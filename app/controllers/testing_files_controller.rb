@@ -22,14 +22,6 @@ class TestingFilesController < ApplicationController
     render :result
   end
 
-  def pass
-    render 'Pass!'
-  end
-
-  def fail
-    render 'Fail!'
-  end
-
   private
 
   def upload_params
