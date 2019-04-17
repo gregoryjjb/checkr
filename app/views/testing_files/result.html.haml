@@ -1,0 +1,11 @@
+%section.hero
+  %div.hero-body
+    %div.container
+      - if @pass
+        %h1.title.has-text-primary File is clean
+        %h2.subtitle Your file did not match any of our malware.
+      - else
+        %h1.title.has-text-danger File is infected
+        %h2.subtitle Your file has matched with one or more of our malware files. You should dispose of it.
+
+      = link_to 'Check another', check_path, { class: 'button is-link' }
