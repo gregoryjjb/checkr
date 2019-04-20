@@ -5,7 +5,7 @@ class TestingFilesController < ApplicationController
   end
 
   def create
-    file = params[:test_file][:file]
+    file = upload_params[:file]
     b64 = Base64.encode64(file.read)
 
     is_bad = false
@@ -17,12 +17,14 @@ class TestingFilesController < ApplicationController
       end
     end
 
-    if is_bad
-      flash.alert = "It's bad!"
-    else
-      flash.notice = "It's fine!"
-    end
+    @pass = !is_bad
 
-    render :new
+    render :result
+  end
+
+  private
+
+  def upload_params
+    params.require(:test_file).permit(:file)
   end
 end
