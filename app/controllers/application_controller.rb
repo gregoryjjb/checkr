@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :exception
 
   def index
     redirect_to check_path if logged_in
