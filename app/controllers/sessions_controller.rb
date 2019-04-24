@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in
-      redirect_to users_url
+      redirect_to check_path
     end
   end
 

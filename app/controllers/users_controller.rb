@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def new
     if logged_in
-      redirect_to users_url
+      redirect_to check_path
     end
 
     @user = User.new
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
     @user.admin = false
 
     if @user.save
-      flash.notice = 'User created'
-      redirect_to @user
+      flash.notice = 'Welcome! You can now sign in'
+      redirect_to login_path
     else
       flash.alert = @user.errors.full_messages
       render :new
@@ -37,9 +37,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    #if current_user.id == @user.id
-    #  update_params.admin = true
-    #end
     par = update_params
 
     if par[:password].blank?

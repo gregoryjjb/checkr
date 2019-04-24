@@ -22,6 +22,12 @@ module SessionsHelper
     logged_in && current_user.admin
   end
 
+  def require_login
+    unless logged_in
+      not_found
+    end
+  end
+
   def allow_only_admin
     if !is_admin
       not_found
