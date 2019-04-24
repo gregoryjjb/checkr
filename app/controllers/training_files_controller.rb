@@ -1,6 +1,8 @@
 require 'digest'
 
 class TrainingFilesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   before_action :allow_only_admin
 
   def index

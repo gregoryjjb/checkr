@@ -1,6 +1,8 @@
 require 'base64'
 
 class TestingFilesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
   end
 
