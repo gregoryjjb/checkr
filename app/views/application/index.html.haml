@@ -8,11 +8,16 @@
 %section.section
   %div.container.has-text-centered
     %p.subtitle Checkr works by comparing your files to a vast database of known malware.
+    = image_tag('screenshot.png', { alt: 'Checkr Screenshot', style: 'width: 400px; max-width: 100%; border-radius: 16px; box-shadow: 1px 1px 5px lightgrey; margin: 32px 0;' })
     %p.subtitle Just upload any files you're suspicious of!
-
 
 %section.section
   %div.container.has-text-centered
     %h1.title Convinced?
     = link_to 'Sign up today!', signup_path, { class: 'button is-large is-link' }
-    %p.subtitle (It's free!)
+    %p.subtitle{ style: "margin-top: 8px;" } (It's free!)
+
+%section.section
+  %div.container.has-text-centered
+    %p.subtitle.is-italic
+      This application is not a real antivirus and provides no security.
