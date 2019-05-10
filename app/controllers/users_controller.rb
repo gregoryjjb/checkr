@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -10,9 +9,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    if logged_in
-      redirect_to check_path
-    end
+    redirect_to check_path if logged_in
 
     @user = User.new
   end
@@ -30,11 +27,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     par = update_params
@@ -44,9 +39,7 @@ class UsersController < ApplicationController
       par.delete(:password_confirmation)
     end
 
-    if current_user.id == @user.id
-      par.delete(:admin)
-    end
+    par.delete(:admin) if current_user.id == @user.id
 
     puts 'PARAMSSSS'
     puts par
@@ -60,24 +53,24 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def protect
-      unless is_admin
-        flash.alert = "You do not have access to this page"
-        redirect_to root_url
-      end
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def update_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+  def protect
+    unless is_admin
+      flash.alert = 'You do not have access to this page'
+      redirect_to root_url
     end
+  end
 
-    def signup_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  def update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+  end
+
+  def signup_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 end

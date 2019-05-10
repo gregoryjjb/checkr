@@ -7,21 +7,20 @@ class TrainingFile < ApplicationRecord
 
   validates :user, presence: true
   validates :file_digest, presence: true, uniqueness: {message: 'File already has been uploaded'}
-  #validates :bytes_sample
 
   def file_digest_snippet
-    if self.file_digest.nil?
+    if file_digest.nil?
       nil
     else
-      self.file_digest[0..7] + "..."
+      file_digest[0..7] + '...'
     end
   end
 
   def bytes_snippet
-    if self.bytes_sample.nil?
+    if bytes_sample.nil?
       nil
     else
-      self.bytes_sample[0..15] + "..."
+      bytes_sample[0..15] + '...'
     end
   end
 
@@ -35,7 +34,7 @@ class TrainingFile < ApplicationRecord
       self.original_filename = original_file.original_filename
       b64 = Base64.encode64(content)
       start = (b64.length / 2).floor
-      self.bytes_sample = b64[start..(start + 255)]
+      self.bytes_sample = b64[start..(start + 255)].gsub! '=', ''
     end
   end
 

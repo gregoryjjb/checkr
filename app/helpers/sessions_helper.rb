@@ -23,19 +23,14 @@ module SessionsHelper
   end
 
   def require_login
-    unless logged_in
-      not_found
-    end
+    not_found unless logged_in
   end
 
   def allow_only_admin
-    if !is_admin
-      not_found
-    end
+    not_found unless is_admin
   end
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
-
 end
