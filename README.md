@@ -10,6 +10,20 @@ Current features:
 * File checking for guests and admins
 * User editing by admins
 
+## How to Run
+
+Ruby/Rails is an absolute nightmare to get running on Windows, I ended up using the Windows Subsystem for Linux.
+
+* Install Ruby (I recommend using [RVM](https://rvm.io/))
+* Install Bundler: `gem install bundler`
+* Install `sqlite3` somehow
+* Clone the project
+* Install dependencies with `bundle install`
+* Run database migrations: `rails db:migrate RAILS_ENV=development`
+* Start the server: `rails s`
+
+If it complains that `rails` isn't a command you might have to install it specifically with `gem install rails -v 5.2.3`.
+
 ## Project Structure
 
 Sessions are handled by Rails magic using cookies.
