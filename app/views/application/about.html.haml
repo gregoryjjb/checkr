@@ -11,6 +11,16 @@
         %a{href: 'https://www.gregbrisebois.com'} Greg Brisebois
         for CS174.
       %p
+        Try these example files for testing
+        %ul
+          %li
+            = link_to 'wannacry.txt', '/examples/wannacry.txt', target: '_blank'
+            (Not a real virus)
+          %li
+            = link_to 'infected.txt', '/examples/infected.txt', target: '_blank'
+            (Not really infected)
+          %li= link_to 'safe.txt', '/examples/safe.txt', target: '_blank'
+      %p
         This application does not actually provide any security
         and should not be used in any real sense.
       %p

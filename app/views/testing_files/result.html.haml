@@ -9,5 +9,9 @@
       - else
         %h1.title.has-text-danger File is infected
         %h2.subtitle Your file has matched with one or more of our malware files. You should dispose of it.
+        %div.content
+          %p
+            Matched malware:
+            %code= @match
 
       = link_to 'Check another', check_path, { class: 'button is-link' }

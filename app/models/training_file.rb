@@ -32,9 +32,19 @@ class TrainingFile < ApplicationRecord
       content = original_file.read
       self.file_digest = Digest::SHA256.hexdigest content
       self.original_filename = original_file.original_filename
-      b64 = Base64.encode64(content)
-      start = (b64.length / 2).floor
-      self.bytes_sample = b64[start..(start + 255)].gsub! '=', ''
+      b64 = Base64.strict_encode64(content).delete '='
+      len = b64.length
+      if len < 64
+        # Entire file is the fingerprint
+        self.bytes_sample = b64
+      elsif len < 128
+        # File is small, grab from end to avoid header
+        self.bytes_sample = b64[(len - 63)..len]
+      else
+        # File is large, grab from middle to avoid header
+        start = (len / 2).floor
+        self.bytes_sample = b64[start..(start + 63)].delete '='
+      end
     end
   end
 
